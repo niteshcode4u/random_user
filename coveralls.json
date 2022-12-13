@@ -1,0 +1,9 @@
+{
+  "skip_files": [
+    "lib/random_user/repo.ex",
+    "lib/random_user_web.ex",
+    "lib/random_user_web/endpoint.ex",
+    "lib/random_user_web/telemetry.ex",
+    "lib/random_user_web/views/error_helpers.ex"
+  ]
+}
