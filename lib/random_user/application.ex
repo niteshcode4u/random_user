@@ -10,6 +10,8 @@ defmodule RandomUser.Application do
     children = [
       # Start the Ecto repository
       RandomUser.Repo,
+      # Start the UserManager
+      RandomUser.UserManager,
       # Start the Telemetry supervisor
       RandomUserWeb.Telemetry,
       # Start the PubSub system
@@ -24,13 +26,5 @@ defmodule RandomUser.Application do
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: RandomUser.Supervisor]
     Supervisor.start_link(children, opts)
-  end
-
-  # Tell Phoenix to update the endpoint configuration
-  # whenever the application is updated.
-  @impl true
-  def config_change(changed, _new, removed) do
-    RandomUserWeb.Endpoint.config_change(changed, removed)
-    :ok
   end
 end

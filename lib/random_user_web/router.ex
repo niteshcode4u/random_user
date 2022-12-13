@@ -5,8 +5,10 @@ defmodule RandomUserWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", RandomUserWeb do
+  scope "/", RandomUserWeb do
     pipe_through :api
+
+    get "/", UserController, :get_random_user
   end
 
   # Enables LiveDashboard only for development
@@ -17,11 +19,8 @@ defmodule RandomUserWeb.Router do
   # you can use Plug.BasicAuth to set up some basic authentication
   # as long as you are also using SSL (which you should anyway).
   if Mix.env() in [:dev, :test] do
-    import Phoenix.LiveDashboard.Router
-
     scope "/" do
       pipe_through [:fetch_session, :protect_from_forgery]
-      live_dashboard "/dashboard", metrics: RandomUserWeb.Telemetry
     end
   end
 end
